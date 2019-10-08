@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block body %}
+{% include "navbar.html" %}
+<section class="hero is-primary is-bold is-large">
+
+  <title>Broer is the best!</title
+  <div class="hero-body"></div>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+    <script>paypal.Buttons().render('body');</script>
+
+  <body>
+ <div class="center">
+
+
+	<h1>Predict the salary!</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="experience" placeholder="Experience" required="required" />
+        <input type="text" name="test_score" placeholder="Test Score" required="required" />
+		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="../static/js/scripts.js"></script>
+{% endblock %}
